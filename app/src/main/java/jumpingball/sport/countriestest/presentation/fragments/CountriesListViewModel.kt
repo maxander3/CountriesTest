@@ -4,29 +4,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import jumpingball.sport.countriestest.data.CountriesRepositoryImpl
 import jumpingball.sport.countriestest.domain.model.CountryModelDomain
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CountriesListViewModel(): ViewModel() {
-
-    val repository:CountriesRepositoryImpl = CountriesRepositoryImpl()
-    //TODO
+@HiltViewModel
+class CountriesListViewModel @Inject constructor(private val repository: CountriesRepositoryImpl) :
+    ViewModel() {
 
     private val _listCountries = MutableLiveData<List<CountryModelDomain>>()
-    val listCountries:LiveData<List<CountryModelDomain>> get() = _listCountries
+    val listCountries: LiveData<List<CountryModelDomain>> get() = _listCountries
 
     private val _error = MutableLiveData<Unit>()
-    val error:LiveData<Unit> get() = _error
+    val error: LiveData<Unit> get() = _error
+
     init {
         getAllCountries()
     }
 
-    fun getAllCountries(){
+    fun getAllCountries() {
         viewModelScope.launch {
-            try{
+            try {
                 _listCountries.postValue(repository.getAllCountries())
-            }catch (e:Throwable){
+            } catch (e: Throwable) {
                 _error.postValue(Unit)
             }
         }
