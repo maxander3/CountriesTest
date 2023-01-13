@@ -5,4 +5,9 @@
     <string name="update">Update</string>
     <string name="error_message">Check internet connecting</string>
     <string name="country_flag">Country flag</string>
+    <string name="country_name">Name: %s</string>
+    <string name="country_capital">Capital: %s</string>
+    <string name="country_region">Region: %s</string>
+    <string name="country_currency">Currency: %s</string>
+    <string name="country_timezone">Timezone: %s</string>
 </resources>

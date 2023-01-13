@@ -10,6 +10,8 @@
         android:id="@+id/main_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="jumpingball.sport.countriestest.presentation.fragments.CountriesListFragment" />
+        app:defaultNavHost="true"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/main_nav_graph" />
 
 </FrameLayout>

@@ -6,5 +6,5 @@ import jumpingball.sport.countriestest.domain.model.DetailCountryModelDomain
 interface CountriesRepository {
     suspend fun getAllCountries():List<CountryModelDomain>
 
-    suspend fun getCountryByName(name:String):DetailCountryModelDomain
+    suspend fun getCountryByName(name:String): List<DetailCountryModelDomain>
 }

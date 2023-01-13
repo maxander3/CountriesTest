@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import jumpingball.sport.countriestest.R
 import jumpingball.sport.countriestest.data.CountriesRepositoryImpl
 import jumpingball.sport.countriestest.databinding.FragmentCountriesListBinding
@@ -39,6 +40,11 @@ class CountriesListFragment : Fragment() {
         binding.countriesRv.adapter = adapter
         viewModel.listCountries.observe(viewLifecycleOwner){
             adapter.submitList(it)
+            adapter.onItemClickListener = {countryName->
+                findNavController().navigate(R.id.detailCountryFragment,Bundle().apply{
+                    putString(DetailCountryFragment.COUNTRY_NAME_KEY,countryName)
+                })
+            }
         }
         viewModel.error.observe(viewLifecycleOwner){
             Toast.makeText(requireContext(), R.string.error_message,Toast.LENGTH_LONG).show()

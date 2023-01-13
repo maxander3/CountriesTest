@@ -13,11 +13,12 @@ class CountriesRepositoryImpl : CountriesRepository {
         return apiProvider.allCountriesApi().getAllCountries().toCountryModelDomain()
     }
 
-    override suspend fun getCountryByName(name: String): DetailCountryModelDomain {
+    override suspend fun getCountryByName(name: String): List<DetailCountryModelDomain> {
         return apiProvider.detailCountryApi().getDetailCountryByCode(name)
             .toDetailCountryModelDomain()
     }
 
 }
+
 
 

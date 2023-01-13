@@ -5,8 +5,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface DetailCountryApi {
-    @GET("name/{code}")
+    @GET("name/{name}")
     suspend fun getDetailCountryByCode(
         @Path("name") name: String,
-    ): CountryModelDataItem
+    ): List<CountryModelDataItem>
 }

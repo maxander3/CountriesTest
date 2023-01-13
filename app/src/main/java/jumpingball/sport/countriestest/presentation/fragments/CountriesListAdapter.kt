@@ -20,11 +20,16 @@ class CountriesListAdapter: ListAdapter<CountryModelDomain, CountriesListAdapter
     }
 }) {
 
+    var onItemClickListener:((String)->Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         return CountryViewHolder(CountryItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
+        holder.itemView.setOnClickListener{
+            onItemClickListener?.invoke(getItem(position).countryName)
+        }
         holder.apply {
             name.text = getItem(position).countryName
             Glide.with(img).load(getItem(position).countryImage).into(img)

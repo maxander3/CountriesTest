@@ -16,6 +16,13 @@ internal fun CountryModelDataItem.toCountryModelDomain(): CountryModelDomain {
     return CountryModelDomain(countryName = this.name, countryImage = this.flags.png)
 }
 
+internal fun  List<CountryModelDataItem>.toDetailCountryModelDomain(): List<DetailCountryModelDomain> {
+    return map{
+        it.toDetailCountryModelDomain()
+    }
+}
+
+
 internal fun CountryModelDataItem.toDetailCountryModelDomain(): DetailCountryModelDomain {
     return DetailCountryModelDomain(countryName = this.name,
         countryImage = this.flags.png,
@@ -24,6 +31,8 @@ internal fun CountryModelDataItem.toDetailCountryModelDomain(): DetailCountryMod
         countryCurrency = this.currencies.toDomain(),
         countryTimeZone = this.timezones)
 }
+
+
 
 internal fun List<CurrencyData>.toDomain(): List<CurrencyDomain> {
     return map {
