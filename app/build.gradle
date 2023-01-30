@@ -8,7 +8,11 @@ plugins {
 android {
     namespace 'jumpingball.sport.countriestest'
     compileSdk 33
-
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
     defaultConfig {
         applicationId "jumpingball.sport.countriestest"
         minSdk 21
@@ -36,7 +40,9 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
 }
+
 
 dependencies {
 
@@ -46,9 +52,20 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    testImplementation 'junit:junit:4.13.2'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+
+    testImplementation 'org.mockito:mockito-core:4.0.0'
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    //для эмуляции финальных классов
+    testImplementation 'org.mockito:mockito-inline:4.0.0'
+    //coroutine test
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
+    //Проблема с mainlooper
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
 
 
     implementation("androidx.multidex:multidex:2.0.1")

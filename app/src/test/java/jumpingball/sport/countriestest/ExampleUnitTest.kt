@@ -1,17 +1,21 @@
 package jumpingball.sport.countriestest
 
-import org.junit.Test
 
-import org.junit.Assert.*
+import jumpingball.sport.countriestest.domain.CountriesRepository
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.mockito.kotlin.mock
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
+
 class ExampleUnitTest {
+
+    val repository = mock<CountriesRepository>()
+
+
     @Test
-    fun addition_isCorrect() {
+    fun shouldReturnCorrectData() {
+        repository
+
         assertEquals(4, 2 + 2)
     }
 }
